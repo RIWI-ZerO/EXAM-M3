@@ -218,4 +218,3 @@ Preferred communication style: Simple, everyday language.
 - **Username:** `admin@crudsazo.com`
 - **Password:** `123456`
 - **Role:** Admin
-

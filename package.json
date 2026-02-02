@@ -1,23 +1,12 @@
-
 {
   "name": "crudzaso-v1-humanizada",
   "version": "1.0.0",
-  "description": "Sistema de gestión académica CRUDZASO - Versión con comentarios humanizados",
+  "description": "Sistema de gestión académica CRUDZASO",
   "main": "index.html",
   "scripts": {
-    "dev": "json-server --watch db.json --port 3000",
-    "start": "json-server --watch db.json --port 3000 --host 0.0.0.0",
-    "build": "echo 'Static files ready for deployment'"
+    "start": "json-server --watch db.json --port 3000"
   },
-  
   "dependencies": {
-    "json-server": "^1.0.0-beta.5"
-  },
-  "keywords": [
-    "crudzaso",
-    "academic",
-    "task-management",
-    "students",
-    "json-server"
-  ]
+    "json-server": "^0.17.4"
+  }
 }

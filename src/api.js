@@ -1,11 +1,13 @@
-document.activeElement("DOMcontentLoaded", function()
-{
+document.addEventListener("DOMContentLoaded", async function() {
     console.log("Loading...");
-    initApp();
+    
+    try {
+        const response = await fetch('db.json'); 
+        const data = await response.json();
+        
+        console.log(data.current.tasks);
+        initApp(); 
+    } catch (error) {
+        console.error("Error loading data:", error);
+    }
 });
-
-
-const response=await fetch ('db.jason');
-const data=await response.json();
-console.log(data.current.tasks);
-

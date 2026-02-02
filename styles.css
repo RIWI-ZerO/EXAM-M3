@@ -1,219 +1,137 @@
-/* Global Styles */
-.pokemon-card {
-    transition: transform 0.2s;
-}
-.pokemon-card:hover {
-    transform: scale(1.05);
-}
-.loading-spinner {
-    border: 4px solid rgba(0, 0, 0, 0.1);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border-left-color: #09f;
-    animation: spin 1s linear infinite;
-}
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .all-\[unset\] {
-    all: unset;
-  }
-}
-
-:root {
-  --animate-spin: spin 1s linear infinite;
-}
-
-.animate-fade-in {
-  animation: fade-in 1s var(--animation-delay, 0s) ease forwards;
-}
-
-.animate-fade-up {
-  animation: fade-up 1s var(--animation-delay, 0s) ease forwards;
-}
-
-.animate-marquee {
-  animation: marquee var(--duration) infinite linear;
-}
-
-.animate-marquee-vertical {
-  animation: marquee-vertical var(--duration) linear infinite;
-}
-
-.animate-shimmer {
-  animation: shimmer 8s infinite;
-}
-
-.animate-spin {
-  animation: var(--animate-spin);
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(1turn);
-  }
-}
-
-@keyframes image-glow {
-  0% {
-    opacity: 0;
-    animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1);
-  }
-
-  10% {
-    opacity: 0.7;
-    animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99);
-  }
-
-  to {
-    opacity: 0.4;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes fade-up {
-  0% {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes shimmer {
-  0%,
-  90%,
-  to {
-    background-position: calc(-100% - var(--shimmer-width)) 0;
-  }
-
-  30%,
-  60% {
-    background-position: calc(100% + var(--shimmer-width)) 0;
-  }
-}
-
-@keyframes marquee {
-  0% {
-    transform: translate(0);
-  }
-
-  to {
-    transform: translateX(calc(-100% - var(--gap)));
-  }
-}
-
-@keyframes marquee-vertical {
-  0% {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(calc(-100% - var(--gap)));
-  }
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Sistema de diseño (Shadcn compatible) */
     --background: 0 0% 100%;
     --foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 47.4% 11.2%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-
-    --card: transparent;
+    --card: 0 0% 100%;
     --card-foreground: 222.2 47.4% 11.2%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 100% 50%;
     --destructive-foreground: 210 40% 98%;
-
     --ring: 215 20.2% 65.1%;
-
     --radius: 0.5rem;
+
+    /* Variables personalizadas para tu dashboard */
+    --ct-bg: #f4f7fb;
+    --ct-primary: #2563eb;
   }
 
   .dark {
     --background: 224 71% 4%;
     --foreground: 213 31% 91%;
-
     --muted: 223 47% 11%;
     --muted-foreground: 215.4 16.3% 56.9%;
-
     --accent: 216 34% 17%;
     --accent-foreground: 210 40% 98%;
-
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
-
     --border: 216 34% 17%;
     --input: 216 34% 17%;
-
-    --card: transparent;
+    --card: 224 71% 4%;
     --card-foreground: 213 31% 91%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 1.2%;
-
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
-
     --ring: 216 34% 17%;
-
-    --radius: 0.5rem;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
+  * { @apply border-border; }
+  body { 
+    @apply bg-background text-foreground; 
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+}
+
+@layer components {
+  /* Utility Components */
+  .pokemon-card { @apply transition-transform duration-200 hover:scale-105; }
+  
+  .all-\[unset\] { all: unset; }
+
+  /* Layout Shell */
+  .ct-shell {
+    @apply grid min-h-screen grid-cols-1 lg:grid-cols-[260px_1fr];
+  }
+
+  .ct-sidebar {
+    @apply hidden lg:flex flex-col bg-white border-r border-border p-4.5;
+  }
+
+  .ct-main { @apply flex flex-col; }
+
+  .ct-topbar {
+    @apply flex justify-between items-center bg-white border-b border-border px-[18px] py-[14px];
+  }
+
+  /* Auth & Cards */
+  .ct-auth-wrap {
+    @apply min-h-screen flex flex-col items-center justify-start p-6 gap-3;
+  }
+
+  .ct-auth-card {
+    @apply w-full max-w-[460px] bg-card border border-border rounded-2xl p-10;
+  }
+
+  .ct-card {
+    @apply bg-card border border-border rounded-[14px];
+  }
+
+  /* Navigation */
+  .ct-nav a {
+    @apply flex items-center gap-2.5 p-2.5 rounded-xl text-slate-900 no-underline mb-1.5 transition-colors;
+  }
+  .ct-nav a.active {
+    @apply bg-blue-50 text-blue-700 font-semibold;
+  }
+
+  /* Badges */
+  .ct-badge {
+    @apply inline-block px-2.5 py-1 rounded-full text-[12px] font-semibold border;
+  }
+  .ct-badge.pending { @apply bg-orange-50 text-orange-800 border-orange-200; }
+  .ct-badge.progress { @apply bg-blue-50 text-blue-700 border-blue-200; }
+  .ct-badge.completed { @apply bg-emerald-50 text-emerald-700 border-emerald-200; }
+}
+
+/* Custom Keyframes (Solo lo que Tailwind no tiene por defecto) */
+@layer utilities {
+  .animate-image-glow { animation: image-glow 2s ease-in-out; }
+  .animate-marquee { animation: marquee var(--duration, 20s) linear infinite; }
+  .animate-shimmer { animation: shimmer 8s infinite; }
+}
+
+@keyframes image-glow {
+  0% { opacity: 0; animation-timing-function: cubic-bezier(0.74, 0.25, 0.76, 1); }
+  10% { opacity: 0.7; animation-timing-function: cubic-bezier(0.12, 0.01, 0.08, 0.99); }
+  100% { opacity: 0.4; }
+}
+
+@keyframes shimmer {
+  0%, 90%, 100% { background-position: calc(-100% - var(--shimmer-width, 40px)) 0; }
+  30%, 60% { background-position: calc(100% + var(--shimmer-width, 40px)) 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% - var(--gap, 1rem))); }
 }
