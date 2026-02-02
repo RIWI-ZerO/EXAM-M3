@@ -1,7 +1,15 @@
-const user={name: 'Nail caffrey'}
-localStorage.setItem('user', JSON.stringify);
+// State Management
+export const state = {
+    user: JSON.parse(localStorage.getItem('user')) || null
+};
 
-const data=localStorage.getItem('user');
-const obj=JSON.parse(data);
+export function setUser(userData) {
+    state.user = userData;
+    if (userData) {
+        localStorage.setItem('user', JSON.stringify(userData));
+    } else {
+        localStorage.removeItem('user');
+    }
+}
 
-localStorage.removeItem('user');
+

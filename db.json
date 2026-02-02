@@ -9,8 +9,9 @@
     "tasks":
     [
         {
-            "name task": "create fax",
-            "picture": "https://...",
+            "id": "1",
+            "name": "create fax",
+            "picture": "https://via.placeholder.com/150",
             "assignee": "Nail Caffrey",
             "status": "Completed",
             "priority":"Medium",
