@@ -1,0 +1,20 @@
+{
+    "users": [
+        {
+            "id": "1",
+            "users": "admin@crudsazo.com",
+            "password": "123456"
+        }
+    ],
+    "tasks":
+    [
+        {
+            "name task": "create fax",
+            "picture": "https://...",
+            "assignee": "Nail Caffrey",
+            "status": "Completed",
+            "priority":"Medium",
+            "due date": "Jan 30, 2026"
+   } ]
+    
+}
