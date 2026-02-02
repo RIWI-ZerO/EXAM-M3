@@ -114,6 +114,7 @@ The developed application includes the following features within its scope:
 
 ## Project Structure
 
+```text
 TEST/
 ├── index.html
 ├── styles.css
@@ -142,6 +143,7 @@ TEST/
         ├── register.js
         ├── profiles.js
         └── tasks.js
+
 
 # CRUDZASO - Task Management Application
 
